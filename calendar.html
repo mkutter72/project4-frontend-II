@@ -1,116 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="utf-8">
+  <title>Responsive Calendar Widget that will make your day</title>
+  <meta name="distributor" content="Global" />
+  <meta itemprop="contentRating" content="General" />
+  <meta name="robots" content="All" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="description" content="The source of truly unique and awesome jquery plugins." />
+  <meta name="keywords" content="slider, carousel, responsive, swipe, one to one movement, touch devices, jquery, plugin, bootstrap compatible, html5, css3" />
+  <meta name="author" content="w3widgets.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css'>
+  <!-- Bootstrap -->
+   <script src="assets/responsive-calendar/0.9/js/jquery.js"></script>
+  <!-- <script src="../js/bootstrap.min.js"></script> -->
+  <script src="assets/responsive-calendar/0.9/js/responsive-calendar.js"></script>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Clean Blog - About</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
-    <link href="css/neat-blue.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+  <!-- Respomsive slider -->
+  <link href="assets/responsive-calendar/0.9/css/responsive-calendar.css" rel="stylesheet">
 </head>
-
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
+<br>
+<br>
+<a href="index.html">Back</a></span>
+<br>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="messages.html">Messages</a>
-                    </li>
-                    <li>
-                        <a href="calendar.html">Calendar</a>
-                    </li>
-                    <li>
-                        <a href="post.html">Blog</a>
-                    </li>
-                    <li>
-                        <a href="index.html">Logout</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
 
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/about-bg.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="page-heading">
-                        <h1>Calendar</h1>
-                        <hr class="small">
-                        <span class="subheading">This is what I do.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</p>
-            </div>
+  <div class="container">
+    <!-- Responsive calendar - START -->
+    <div class="responsive-calendar">
+      <div class="controls">
+        <a class="pull-left" data-go="prev"><div class="btn btn-primary">Prev</div></a>
+        <h4><span data-head-year></span> <span data-head-month></span></h4>
+        <a class="pull-right" data-go="next"><div class="btn btn-primary">Next</div></a>
+      </div><hr/>
+      <div class="day-headers">
+        <div class="day header">Sun</div>
+        <div class="day header">Mon</div>
+        <div class="day header">Tue</div>
+        <div class="day header">Wed</div>
+        <div class="day header">Thu</div>
+        <div class="day header">Fri</div>
+        <div class="day header">Sat</div>
+      </div>
+      <div class="days" data-group="days">
+
+      </div>
+    </div>
+    <!-- Responsive calendar - END -->
+
+
+     <input id="showEvents" type="button" value="Show Events">
+    <input id="clearEvents" type="button" value="Clear Events">
+     <textarea id="result"></textarea>
+    <div class="createAppointmentForm">
+      <form id="create-appointment" role="form">
+        <label for="">Date</label>
+        <div class="form-group">
+          <input type="text" name="appDate" id="appointment-date" class="form-control" placeholder="Date" value="">
         </div>
+
+        <label for="">Username</label>
+        <div class="form-group">
+          <input type="text" name="appUsername" id="appointment-owner" class="form-control" placeholder="Username" value="">
+        </div>
+
+        <label for="">Description:</label>
+        <div class="form-group">
+          <input type="text" name="appDescription" id="appointment-description" class="form-control" placeholder="Description" value="">
+        </div>
+        <label for="">Time:</label>
+        <div class="form-group">
+        <input type="text" name="appTime" id="appointment-time" class ="form-control" placeholder="Time" value="">
+        </div>
+        <div class="form-group text-center">
+          <input type="submit" id="" class="btn btn-success" value="Submit">
+        </div>
+      </form>
     </div>
 
-    <hr>
 
+  </div>
 
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
-
-    <script src="app.js"></script>
-
+  <script src="app.js"></script>
+  <script src="ajax.js"></script>
+  <script src="calendar.js"></script>
 </body>
-
 </html>
