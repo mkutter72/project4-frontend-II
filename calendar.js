@@ -84,6 +84,10 @@ $(document).ready(function () {
     api.updateMessageBoard(messageData,generalCallback);
   });
 
+  $('#seleectBoardID').on('click',function (e){
+    e.preventDefault();
+    api.getMessageBoard($('#boardNameID').val(),displayMessagesCallback);
+  });
 
   $('#create-appointment').on('submit', function(e) {
     e.preventDefault();
