@@ -59,7 +59,7 @@ function generalCallback(error, data) {
   };
 
 var api = {
-  url: 'https://intense-cove-9531.herokuapp.com/',
+  url: 'https://intense-cove-9531.herokuapp.com',
   ajax: function(config, cb) {
     $.ajax(config).done(function(data, textStatus, jqxhr) {
       cb(null, data);
