@@ -1,3 +1,5 @@
+'use strict';
+
 var form2object = function(form) {
     var data = {};
     $(form).find("input").each(function(index, element) {
