@@ -35,9 +35,9 @@ function displayMessagesCallback(error, data) {
       var oneThing = data.messages;
       var size = oneThing.length;
       for (var i = 0; i < size; i++) {
-        allMessages += oneThing[i]["userName"] + "\n";
+        allMessages += oneThing[i]["userName"] + "  ";
         allMessages += oneThing[i]["mesageTime"] + "\n";
-        allMessages += oneThing[i]["messageText"] + "\n";
+        allMessages += oneThing[i]["messageText"] + "\n\n";
         }
       $('#chatspace').val(allMessages);
     } else {
