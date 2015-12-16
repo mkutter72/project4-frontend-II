@@ -4,7 +4,7 @@ var externAppsFunctions = externAppsFunctions || {};
 
 var allEvents;
 
-var socket = io('https://intense-cove-9531.herokuapp.com/:3030');
+var socket = io('https://intense-cove-9531.herokuapp.com');
 
 
 
