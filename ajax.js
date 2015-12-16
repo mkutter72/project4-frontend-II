@@ -84,6 +84,12 @@ var api = {
       data: JSON.stringify(credentials)
     }, callback);
   },
+  logout: function(callback) {
+    this.ajax({
+      method: 'PATCH',
+      url: this.url + '/logout',
+    }, callback);
+  },
 
   getCalendar: function (callback) {
     this.ajax({

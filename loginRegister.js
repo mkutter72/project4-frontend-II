@@ -5,6 +5,7 @@
     e.preventDefault();
 
     var credentials = form2object(this);
+    $('.registerStatus').text("");
 
     if (credentials["password"] !== credentials["password2"])
       $('.registerStatus').text('Passwords do not match');
@@ -26,6 +27,7 @@ $('#loginForm').on('submit', function(e) {
     e.preventDefault();
 
     var credentials = form2object(this);
+    $('.loginStatus').text("");
 
     var loginCallback = function(error, data){
       if(error){
@@ -40,3 +42,17 @@ $('#loginForm').on('submit', function(e) {
   });
 
 
+
+$('#logOut').on('click', function(e) {
+    e.preventDefault();
+
+    var logoutCallback = function(error, data){
+      if(error)
+        console.log(error);
+
+      window.location.href = 'index.html';
+    };
+
+    api.logout(logoutCallback);
+
+  });
