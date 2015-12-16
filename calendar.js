@@ -4,7 +4,7 @@ var externAppsFunctions = externAppsFunctions || {};
 
 var allEvents;
 
-var socket = io('http://localhost:3030');
+//var socket = io('http://localhost:3030');
 
 function addLeadingZero (num) {
  if (num < 10) {
@@ -84,7 +84,7 @@ $(document).ready(function () {
 
     e.preventDefault();
     api.updateMessageBoard(messageData,generalCallback);
-    socket.emit('chat message', $('#messageTextID').val());
+ //   socket.emit('chat message', $('#messageTextID').val());
   });
 
   $('#seleectBoardID').on('click',function (e){
@@ -92,9 +92,9 @@ $(document).ready(function () {
     api.getMessageBoard($('#boardNameID').val(),displayMessagesCallback);
   });
 
-  socket.on('chat message', function(msg){
-      $('#chatspace').val(msg);
-    });
+  // socket.on('chat message', function(msg){
+  //     $('#chatspace').val(msg);
+  //   });
 
   $('#create-appointment').on('submit', function(e) {
     e.preventDefault();
