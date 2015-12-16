@@ -56,3 +56,5 @@ $('#logOut').on('click', function(e) {
     api.logout(logoutCallback);
 
   });
+
+
