@@ -9,3 +9,19 @@
   top : -300px;
 
 }
+
+
+/* might need this for debugging */
+#showEvents {
+  display : none;
+}
+
+#clearEvents {
+  display : none;
+}
+
+
+#hoverEvents {
+    min-width: 300px;
+    min-height: 75px;
+}

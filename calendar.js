@@ -83,7 +83,7 @@ $(document).ready(function () {
       currentAppointments[key].number +=  1;
       var newindex = currentAppointments[key].dayEvents.length;
       var newAppointment = {
-        "userName": appointmentData.appUsername,
+        "userName": sessionStorage.currentUser,
         "description": appointmentData.appDescription,
         "time": appointmentData.appTime
       };
@@ -97,7 +97,7 @@ $(document).ready(function () {
       editData[appointmentData.appDate] = {
         "number": 1,
         "dayEvents": [{
-          "userName": appointmentData.appUsername,
+          "userName": sessionStorage.currentUser,
           "description": appointmentData.appDescription,
           "time": appointmentData.appTime
         }]
@@ -116,6 +116,17 @@ $('#clearEvents').on('click',function (){
 
 });
 
+$('#eventClearButton').on('click',function (){
+
+  var clearDate = $('#appointment-date').val();
+
+  $(".responsive-calendar").responsiveCalendar('clear', [clearDate]);
+
+});
+
+
+
+
 
 $(".responsive-calendar").responsiveCalendar({
   time: '2015-12',
@@ -126,12 +137,17 @@ $(".responsive-calendar").responsiveCalendar({
     var key = $(this).data('year')+'-'+addLeadingZero( $(this).data('month') )+'-'+addLeadingZero( $(this).data('day') );
     var  thisDayEvent = events[key];
 
-    var resultString = key;
+    var resultString = "";
 
     if (thisDayEvent) {
-      resultString += JSON.stringify(thisDayEvent);
+      var eventsArray = thisDayEvent.dayEvents;
+      for (var i=0; i < eventsArray.length; ++i) {
+          resultString += eventsArray[i].userName + " ";
+          resultString += eventsArray[i].time + " ";
+          resultString += eventsArray[i].description + "\n";
+        }
       }
-    $('#result').val(resultString);
+    $('#hoverEvents').val(resultString);
     },
 
 
