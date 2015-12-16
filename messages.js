@@ -32,7 +32,7 @@ $(document).ready(function () {
       };
 
     var d = new Date();
-    var newMessage = sessionStorage.currentUser + " " + d.toLocaleString() + " " + $('#messageTextID').val();
+    var newMessage = sessionStorage.currentUser + " " + d.toLocaleString() + "\n" + $('#messageTextID').val() + "\n\n";
     socket.emit('chat message', newMessage);
     api.updateMessageBoard(messageData,generalCallback);
     });
@@ -43,7 +43,9 @@ $(document).ready(function () {
     });
 
   socket.on('chat message', function(msg){
-      $('#chatspace').val(msg);
+      allMessages += msg;
+      $('#chatspace').val(allMessages);
+
     });
 
 });
