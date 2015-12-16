@@ -31,8 +31,9 @@ $(document).ready(function () {
       "messagetext": $('#messageTextID').val()
       };
 
-
-    socket.emit('chat message', $('#messageTextID').val());
+    var d = new Date();
+    var newMessage = sessionStorage.currentUser + " " + d.toLocaleString() + " " + $('#messageTextID').val();
+    socket.emit('chat message', newMessage);
     api.updateMessageBoard(messageData,generalCallback);
     });
 

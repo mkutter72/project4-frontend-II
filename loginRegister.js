@@ -28,12 +28,14 @@ $('#loginForm').on('submit', function(e) {
 
     var credentials = form2object(this);
     $('.loginStatus').text("");
+    sessionStorage.currentUser = credentials["username"];
 
     var loginCallback = function(error, data){
       if(error){
         console.log(error);
         $('.loginStatus').text('Error in login');
       } else {
+
         window.location.href = 'indexFull.html'
       }
     };
@@ -45,6 +47,7 @@ $('#loginForm').on('submit', function(e) {
 
 $('#logOut').on('click', function(e) {
     e.preventDefault();
+    currentUser = "";
 
     var logoutCallback = function(error, data){
       if(error)
@@ -62,12 +65,14 @@ $('#logOut').on('click', function(e) {
     e.preventDefault();
 
     var credentials = form2object(this);
+    sessionStorage.currentUser = credentials["username"];
 
     var loginCallback = function(error, data){
       if(error){
         console.log(error);
       } else {
         window.location.href = 'indexFull.html'
+
       }
     };
     api.login(credentials, loginCallback);
