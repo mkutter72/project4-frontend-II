@@ -67,34 +67,8 @@ $(document).ready(function () {
     $('#result').val(resultString);
   });
 
-  $('#createBoardID').on('click',function (e){
-    var boardData = {
-      "boardname": $('#boardNameID').val()
-        };
 
-    e.preventDefault();
-    api.createMessageBoard(boardData,generalCallback);
-    });
 
- $('#postMessageID').on('click',function (e){
-   var messageData = {
-      "boardname": $('#boardNameID').val(),
-      "messagetext": $('#messageTextID').val()
-        };
-
-    e.preventDefault();
-    api.updateMessageBoard(messageData,generalCallback);
- //   socket.emit('chat message', $('#messageTextID').val());
-  });
-
-  $('#seleectBoardID').on('click',function (e){
-    e.preventDefault();
-    api.getMessageBoard($('#boardNameID').val(),displayMessagesCallback);
-  });
-
-  // socket.on('chat message', function(msg){
-  //     $('#chatspace').val(msg);
-  //   });
 
   $('#create-appointment').on('submit', function(e) {
     e.preventDefault();
