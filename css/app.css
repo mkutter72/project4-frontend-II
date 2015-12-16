@@ -2,3 +2,10 @@
     min-width: 800px;
     min-height: 400px;
 }
+
+#calendarControls{
+  position: relative;
+  left : 650px;
+  top : -300px;
+
+}

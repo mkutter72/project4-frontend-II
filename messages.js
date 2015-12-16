@@ -6,8 +6,6 @@ var allEvents;
 
 var socket = io('https://intense-cove-9531.herokuapp.com');
 
-
-
 $(document).ready(function () {
   $('#showEvents').on('click',function (event){
     e.preventDefault();
