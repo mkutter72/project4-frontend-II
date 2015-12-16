@@ -73,10 +73,10 @@
         </div>
     </header>
 
-
    <section class="">
       <div class="container">
         <h1><span>Registration</span></h1>
+        <div class="registerStatus"> </div>
         <div class="row">
           <div class="col-sm-12 col-md-offset-3 col-md-6">
             <div class="thumbnail info-thumbnail background-lead color-white">
@@ -85,19 +85,19 @@
                 <form id="registerForm" role="form">
                   <div class="form-group">
                     <label for="exampleInputName">User Name</label>
-                    <input type="text" class="form-control" id="exampleInputName" placeholder="User Name">
+                    <input type="text" name="username" class="form-control" id="exampleInputName" placeholder="User Name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputSecondName">Community Name</label>
-                    <input type="text" class="form-control" id="exampleInputSecondName" placeholder="Community Name">
+                    <input type="text" name="communityName" class="form-control" id="exampleInputSecondName" placeholder="Community Name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword12">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword12" placeholder="Password">
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword12" placeholder="Password">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword2">Re-enter password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                    <input type="password" name="password2" class="form-control" id="exampleInputPassword2" placeholder="Password">
                   </div>
                   <button type="submit" class="btn btn-default">Register</button>
                   <span class="color-white"><button type="button" class="btn btn-link pull-right"><a href="login.html">Login</button></span>
@@ -121,6 +121,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/clean-blog.min.js"></script>
     <script src="app.js"></script>
+    <script src="ajax.js"></script>
     <script src="loginRegister.js"></script>
 
 </body>
