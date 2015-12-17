@@ -5,7 +5,7 @@ var externAppsFunctions = externAppsFunctions || {};
 var allEvents;
 
 //var socket = io('http://localhost:3030');
-var socket = io('http://localhost:3000');
+var socket = io('https://intense-cove-9531.herokuapp.com');
 
 function addLeadingZero (num) {
  if (num < 10) {
