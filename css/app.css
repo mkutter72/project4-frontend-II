@@ -29,3 +29,16 @@
 #messageTextID {
   min-width: 345px;
 }
+
+
+#wallText {
+  min-width: 500px;
+    min-height: 60px;
+}
+
+
+#wallDisplay{
+  position: relative;
+  left : 150px;
+
+}
