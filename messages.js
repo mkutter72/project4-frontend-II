@@ -33,6 +33,7 @@ $(document).ready(function () {
     var newMessage = sessionStorage.currentUser + " " + d.toLocaleString() + "\n" + $('#messageTextID').val() + "\n\n";
     socket.emit('chat message', newMessage);
     api.updateMessageBoard(messageData,generalCallback);
+    $('#messageTextID').val("");
     });
 
   $('#seleectBoardID').on('click',function (e){
@@ -43,6 +44,7 @@ $(document).ready(function () {
   socket.on('chat message', function(msg){
       allMessages += msg;
       $('#chatspace').val(allMessages);
+      console.log(msg);
 
     });
 

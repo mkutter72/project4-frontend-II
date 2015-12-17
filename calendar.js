@@ -5,6 +5,7 @@ var externAppsFunctions = externAppsFunctions || {};
 var allEvents;
 
 //var socket = io('http://localhost:3030');
+var socket = io('http://localhost:3000');
 
 function addLeadingZero (num) {
  if (num < 10) {
@@ -74,39 +75,15 @@ $(document).ready(function () {
     e.preventDefault();
     var appointmentData = form2object(this);
 
-    var events = allEvents.options.events;
-    var currentAppointments = {}
-    var key = appointmentData.appDate;
-    currentAppointments[key] = events[key];
-
-    if (events[key]) {
-      currentAppointments[key].number +=  1;
-      var newindex = currentAppointments[key].dayEvents.length;
-      var newAppointment = {
-        "userName": appointmentData.appUsername,
-        "description": appointmentData.appDescription,
-        "time": appointmentData.appTime
-      };
-
-      currentAppointments[key].dayEvents[newindex] = newAppointment;
-
-      $(".responsive-calendar").responsiveCalendar('edit', currentAppointments);
-    } else {
-
-      var editData = {};
-      editData[appointmentData.appDate] = {
-        "number": 1,
-        "dayEvents": [{
-          "userName": appointmentData.appUsername,
-          "description": appointmentData.appDescription,
-          "time": appointmentData.appTime
-        }]
-      };
-
-      $(".responsive-calendar").responsiveCalendar('edit', editData);
-    }
     $('#create-appointment').trigger("reset");
+
     api.createAppointment(appointmentData,generalCallback);
+
+    // the database will insert username for us.   Insert it
+    // after the db call so the socket message will have all the info
+    appointmentData["userName"] = sessionStorage.currentUser;
+    var msg =JSON.stringify(appointmentData);
+    socket.emit('chat message', msg);
   });
 
 $('#clearEvents').on('click',function (){
@@ -115,6 +92,27 @@ $('#clearEvents').on('click',function (){
   $(".responsive-calendar").responsiveCalendar('clearAll');
 
 });
+
+$('#eventClearButton').on('click',function (){
+
+  var clearDatestr =  "CLEAR" + $('#appointment-date').val();
+
+  socket.emit('chat message', clearDatestr);
+});
+
+
+socket.on('chat message', function(msg){
+  if (msg.startsWith("CLEAR")) {
+    var clearDate = msg.replace("CLEAR","");
+    $(".responsive-calendar").responsiveCalendar('clear', [clearDate]);
+  }
+  else {
+    var data =   JSON.parse(msg);
+    addCalendarEvent(data["appDate"],data["userName"],data["appDescription"],data["appTime"]);
+  };
+
+});
+
 
 
 $(".responsive-calendar").responsiveCalendar({
@@ -126,12 +124,17 @@ $(".responsive-calendar").responsiveCalendar({
     var key = $(this).data('year')+'-'+addLeadingZero( $(this).data('month') )+'-'+addLeadingZero( $(this).data('day') );
     var  thisDayEvent = events[key];
 
-    var resultString = key;
+    var resultString = "";
 
     if (thisDayEvent) {
-      resultString += JSON.stringify(thisDayEvent);
+      var eventsArray = thisDayEvent.dayEvents;
+      for (var i=0; i < eventsArray.length; ++i) {
+          resultString += eventsArray[i].userName + " ";
+          resultString += eventsArray[i].time + " ";
+          resultString += eventsArray[i].description + "\n";
+        }
       }
-    $('#result').val(resultString);
+    $('#hoverEvents').val(resultString);
     },
 
 

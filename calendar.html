@@ -57,19 +57,15 @@
     <div id="calendarControls">
      <input id="showEvents" type="button" value="Show Events">
     <input id="clearEvents" type="button" value="Clear Events">
-     <textarea id="result"></textarea>
+     <textarea id="hoverEvents"></textarea>
+     <br>
+     <br>
     <div class="createAppointmentForm">
       <form id="create-appointment" role="form">
         <label for="">Date</label>
         <div class="form-group">
           <input type="text" name="appDate" id="appointment-date" class="form-control" placeholder="Date" value="">
         </div>
-
-        <label for="">Username</label>
-        <div class="form-group">
-          <input type="text" name="appUsername" id="appointment-owner" class="form-control" placeholder="Username" value="">
-        </div>
-
         <label for="">Description:</label>
         <div class="form-group">
           <input type="text" name="appDescription" id="appointment-description" class="form-control" placeholder="Description" value="">
@@ -79,7 +75,8 @@
         <input type="text" name="appTime" id="appointment-time" class ="form-control" placeholder="Time" value="">
         </div>
         <div class="form-group text-center">
-          <input type="submit" id="" class="btn btn-success" value="Submit">
+          <input type="submit" class="btn btn-primary" value="Save">
+          <inpuy id = "eventClearButton" class="btn btn-primary"  type="button">Clear</button>
         </div>
       </form>
     </div>
@@ -90,6 +87,7 @@
 
   <script src="app.js"></script>
   <script src="ajax.js"></script>
+  <script src="assets/socket.io/socket.io.js"></script>
   <script src="calendar.js"></script>
 </body>
 </html>
