@@ -95,15 +95,21 @@ $('#clearEvents').on('click',function (){
 
 $('#eventClearButton').on('click',function (){
 
-  var clearDate = $('#appointment-date').val();
+  var clearDatestr =  "CLEAR" + $('#appointment-date').val();
 
-  $(".responsive-calendar").responsiveCalendar('clear', [clearDate]);
+  socket.emit('chat message', clearDatestr);
 });
 
 
 socket.on('chat message', function(msg){
-  var data =   JSON.parse(msg);
-  addCalendarEvent(data["appDate"],data["userName"],data["appDescription"],data["appTime"]);
+  if (msg.startsWith("CLEAR")) {
+    var clearDate = msg.replace("CLEAR","");
+    $(".responsive-calendar").responsiveCalendar('clear', [clearDate]);
+  }
+  else {
+    var data =   JSON.parse(msg);
+    addCalendarEvent(data["appDate"],data["userName"],data["appDescription"],data["appTime"]);
+  };
 
 });
 
