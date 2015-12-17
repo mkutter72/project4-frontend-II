@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 var externAppsFunctions = externAppsFunctions || {};
 
@@ -21,7 +21,7 @@ $(document).ready(function () {
       "boardname": $('#boardNameID').val()
         };
 
-    api.createMessageBoard(boardData,generalCallback);
+    api.createMessageBoard(boardData,addOrRemoveBoardCallback);
     });
 
  $('#postMessageID').on('click',function (e){
@@ -38,10 +38,23 @@ $(document).ready(function () {
     $('#messageTextID').val("");
     });
 
-  $('#seleectBoardID').on('click',function (e){
+  $('#selectBoardID').on('click',function (e){
     e.preventDefault();
     api.getMessageBoard($('#boardNameID').val(),displayMessagesCallback);
     });
+
+ $('#listBoardsID').on('click',function (e){
+    e.preventDefault();
+    api.getMessageBoardNames(displayBoardNamesCallback);
+    });
+
+
+ $('#deleteBoardID').on('click',function (e){
+    e.preventDefault();
+    api.deleteMessageBoard($('#boardNameID').val(),addOrRemoveBoardCallback);
+    });
+
+
 
   socket.on('chat message', function(msg){
       allMessages += msg;
