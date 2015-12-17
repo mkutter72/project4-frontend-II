@@ -46,6 +46,33 @@ function displayMessagesCallback(error, data) {
 
   };
 
+function displayBoardNamesCallback(error, data) {
+    if (error) {
+
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+    }
+
+    if (data) {
+      // keeping this around just incase I need to turn back on displaying all returns from DB
+      var dataStr = JSON.stringify(data, null, 4);
+
+      allMessages = "Available Messageboards\n";
+      var oneThing = data.boardnames;
+      var size = oneThing.length;
+      for (var i = 0; i < size; i++) {
+         allMessages += oneThing[i] + "\n";
+         }
+      $('#chatspace').val(allMessages);
+    } else {
+      console.log("error,  message board not found");
+    }
+
+  };
+
+
+
+
 function generalCallback(error, data) {
     if (error) {
 
@@ -126,12 +153,32 @@ var api = {
   },
 
   getMessageBoard: function (boardName, callback) {
+      this.ajax({
+        method: 'GET',
+        url: this.url + '/mboard?q=' + boardName,
+        dataType: 'json'
+      }, callback);
+  },
+
+ getMessageBoardNames: function (callback) {
+      this.ajax({
+        method: 'GET',
+        url: this.url + '/mboard',
+        dataType: 'json'
+      }, callback);
+  },
+
+  deleteMessageBoard: function (boardName, callback) {
     this.ajax({
-      method: 'GET',
-      url: this.url + '/mboard?q=' + boardName,
-      dataType: 'json'
+      method: 'DELETE',
+      url: this.url + '/mboard/destroy?q=' + boardName,
     }, callback);
   },
+
+
+
+
+
 
 
 
@@ -175,12 +222,6 @@ var api = {
     }, callback);
   },
 
-  deleteResults: function (surveyName, callback) {
-    this.ajax({
-      method: 'DELETE',
-      url: this.url + '/result/destroy?q=' + surveyName,
-    }, callback);
-  },
 
   deleteSurvey: function (surveyName, callback) {
     this.ajax({
@@ -189,3 +230,15 @@ var api = {
     }, callback);
   },
 };
+
+
+
+function addOrRemoveBoardCallback(error, data) {
+    if (error) {
+
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+    }
+
+    api.getMessageBoardNames(displayBoardNamesCallback);
+  };
