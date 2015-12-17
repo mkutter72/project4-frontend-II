@@ -5,6 +5,7 @@ var externAppsFunctions = externAppsFunctions || {};
 var allEvents;
 
 //var socket = io('http://localhost:3030');
+var socket = io('http://localhost:3000');
 
 function addLeadingZero (num) {
  if (num < 10) {
@@ -74,39 +75,15 @@ $(document).ready(function () {
     e.preventDefault();
     var appointmentData = form2object(this);
 
-    var events = allEvents.options.events;
-    var currentAppointments = {}
-    var key = appointmentData.appDate;
-    currentAppointments[key] = events[key];
-
-    if (events[key]) {
-      currentAppointments[key].number +=  1;
-      var newindex = currentAppointments[key].dayEvents.length;
-      var newAppointment = {
-        "userName": sessionStorage.currentUser,
-        "description": appointmentData.appDescription,
-        "time": appointmentData.appTime
-      };
-
-      currentAppointments[key].dayEvents[newindex] = newAppointment;
-
-      $(".responsive-calendar").responsiveCalendar('edit', currentAppointments);
-    } else {
-
-      var editData = {};
-      editData[appointmentData.appDate] = {
-        "number": 1,
-        "dayEvents": [{
-          "userName": sessionStorage.currentUser,
-          "description": appointmentData.appDescription,
-          "time": appointmentData.appTime
-        }]
-      };
-
-      $(".responsive-calendar").responsiveCalendar('edit', editData);
-    }
     $('#create-appointment').trigger("reset");
+
     api.createAppointment(appointmentData,generalCallback);
+
+    // the database will insert username for us.   Insert it
+    // after the db call so the socket message will have all the info
+    appointmentData["userName"] = sessionStorage.currentUser;
+    var msg =JSON.stringify(appointmentData);
+    socket.emit('chat message', msg);
   });
 
 $('#clearEvents').on('click',function (){
@@ -121,10 +98,14 @@ $('#eventClearButton').on('click',function (){
   var clearDate = $('#appointment-date').val();
 
   $(".responsive-calendar").responsiveCalendar('clear', [clearDate]);
-
 });
 
 
+socket.on('chat message', function(msg){
+  var data =   JSON.parse(msg);
+  addCalendarEvent(data["appDate"],data["userName"],data["appDescription"],data["appTime"]);
+
+});
 
 
 

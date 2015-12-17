@@ -46,6 +46,7 @@ $(document).ready(function () {
   socket.on('chat message', function(msg){
       allMessages += msg;
       $('#chatspace').val(allMessages);
+      console.log(msg);
 
     });
 
