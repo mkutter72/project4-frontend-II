@@ -15,7 +15,6 @@ see: https://github.com/mkutter72/project4-backend/blob/master/README.md
 * As a user I want to add events to the calendar
 * As a user I want to remove event from the calendar
 * As a user I want to see new events appear if another user is online and creating events
-* As a user I want to see new events appear if another user is online and creating events
 * As a user I want to see events be removed if another user is online and removing events
 
 
@@ -32,12 +31,17 @@ see: https://github.com/mkutter72/project4-backend/blob/master/README.md
 
 
 ##Wireframe Diagrams
+<img src="img/WireFrame1.jpg">
+<img src="img/WireFrame2.jpg">
 
 ##Explanation of Technologies Used
+I selected Mongo as my database because of it's flexibly.   I have still have major pieces of work I want to do and like the fact that I don't have to make all my design decisions up front.   I selected socket.io because if it's ease of use (coding along with the demo) and that it has been very popular on GitHub.
 
 ##Unsolved Problems/Major Hurdles
+I am having intermitant problems with saving my conversations in the database.   Maybe an interaction wit socket.io and mongo
 
 ##Installation Instructions
+N/A
 
 ##General Approach/Workflow Planning
 * Define user stories
