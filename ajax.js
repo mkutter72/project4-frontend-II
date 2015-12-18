@@ -53,6 +53,7 @@ function displayMessagesCallback(error, data) {
       $('#chatspace').val(allMessages);
     } else {
       console.log("error,  message board not found");
+      $('#chatspace').val("");
     }
 
   };
