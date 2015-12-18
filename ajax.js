@@ -3,6 +3,17 @@ var externAppsFunctions = externAppsFunctions || {};
 
 var allMessages = "";
 
+function addMessageCallback(error,data)
+{
+    if (error) {
+
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+    }
+
+  externAppsFunctions.sendBoardMessage();
+};
+
 function fillCalendarCallback(error, data) {
     if (error) {
 

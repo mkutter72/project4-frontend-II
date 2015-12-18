@@ -6,7 +6,12 @@ var allEvents;
 
 var socket = io('http://localhost:3000');
 
+var messageToBeSent = "";
 
+function sendBoardMessage()
+{
+  socket.emit('chat message', messageToBeSent);
+};
 
 $(document).ready(function () {
   $('#showEvents').on('click',function (event){
@@ -31,10 +36,11 @@ $(document).ready(function () {
       "messagetext": $('#messageTextID').val()
       };
 
+    // Get the message ready.   It will be sent after the database transaction has completed
     var d = new Date();
-    var newMessage = sessionStorage.currentUser + " " + d.toLocaleString() + "\n" + $('#messageTextID').val() + "\n\n";
-    socket.emit('chat message', newMessage);
-    api.updateMessageBoard(messageData,generalCallback);
+    messageToBeSent = sessionStorage.currentUser + " " + d.toLocaleString() + "\n" + $('#messageTextID').val() + "\n\n";
+
+    api.updateMessageBoard(messageData,addMessageCallback);
     $('#messageTextID').val("");
     });
 
@@ -65,5 +71,6 @@ $(document).ready(function () {
 
 });
 
+externAppsFunctions['sendBoardMessage'] = sendBoardMessage;
 
 
