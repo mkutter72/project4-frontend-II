@@ -40,7 +40,8 @@ $(document).ready(function () {
     var d = new Date();
     messageToBeSent = sessionStorage.currentUser + " " + d.toLocaleString() + "\n" + $('#messageTextID').val() + "\n\n";
 
-    api.updateMessageBoard(messageData,addMessageCallback);
+    sendBoardMessage();
+    api.updateMessageBoard(messageData,generalCallback);
     $('#messageTextID').val("");
     });
 
