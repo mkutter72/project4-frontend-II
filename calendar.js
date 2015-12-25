@@ -83,6 +83,7 @@ $(document).ready(function () {
     // after the db call so the socket message will have all the info
     appointmentData["userName"] = sessionStorage.currentUser;
     var msg =JSON.stringify(appointmentData);
+    msg = "ADD" + msg;
     socket.emit('chat message', msg);
   });
 
@@ -95,6 +96,8 @@ $('#clearEvents').on('click',function (){
 
 $('#eventClearButton').on('click',function (){
 
+  api.clearDate($('#appointment-date').val(),generalCallback);
+
   var clearDatestr =  "CLEAR" + $('#appointment-date').val();
 
   socket.emit('chat message', clearDatestr);
@@ -106,8 +109,9 @@ socket.on('chat message', function(msg){
     var clearDate = msg.replace("CLEAR","");
     $(".responsive-calendar").responsiveCalendar('clear', [clearDate]);
   }
-  else {
-    var data =   JSON.parse(msg);
+  else if (msg.startsWith("ADD")) {
+    var getMessage = msg.replace("ADD","");
+    var data =   JSON.parse(getMessage);
     addCalendarEvent(data["appDate"],data["userName"],data["appDescription"],data["appTime"]);
   };
 

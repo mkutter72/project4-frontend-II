@@ -1,58 +1,49 @@
 # README For Community Cares Website - Project 4
-This README file is for general information and details on the front end of the project.  For the backend README file
+This README file is for general information and details on the front end of the Community Cares project.  For the backend README file
 see: https://github.com/mkutter72/project4-backend/blob/master/README.md
 
-## Users
-The survey program will have two types of roles. Creators and takers.
+
 ## Users Stories:
 ### General Creator Stories
-* As a creator I want to create an account
-* As a creator I want to login with a secure login
-* As a creator I want to create a one question survey
-* As a creator I want to specify up to 5 answers to a question
-* As a creator I would like to be able to give the survey a name
-* As a creator I want to be able to collect a nickname, city, age, and answer from the survey taker
-* As a creator I want to be able to generate a survey using a randomly generated URL
-* As a creator I want to be able to view a dashboard fwhere I can request a survey showing all of the answers, nicknames, ages, and cities
-* As a creator I want to be able to destroy a survey
-
-
-
-
-### General Taker Stories
-* As a taker I want to be able to go to a survey by clicking on a random url
-* As a taker I want to be able answer the single question survey
-* As a taker I want to be able to submit my survey
-* As a taker I want to be able to give my nickname, city, and age within the survey
+* As a user I want to create an account
+* As a user I want to login with a secure login
+* As a user I want to be able to create a message board
+* As a user I want to list existing message boards and display content
+* As a user I want to be able to add messages to a message board
+* As a user I want to see new messages appear if another user is online and posting messages
+* As a user I want to have access to an online calendar
+* As a user I want to add events to the calendar
+* As a user I want to remove event from the calendar
+* As a user I want to see new events appear if another user is online and creating events
+* As a user I want to see events be removed if another user is online and removing events
 
 
 
 ##Additional Stories for Phase II
-### Creator Stories
-* As a creator I would like to be able to create multiple surveys
-* As a creator I would like to be able to select a survey by name to view in the dashboard
-* As a creator I would like to be able to select a survey by name to destroy
-* As a creator I would like to be able to create a survey with multiple questions
-* As a creator I would like to be able to update any question within any survey at any time
-* As a creator I would like to be able to have answers selected froma drop down menu or entered in a text box format
-* As a creator I would like to be able to have the dashboard update in real time to see the answers pour in as they are completed
-* As a creator I would like to specify any numbers of answer to a question
-* As a creator I would like to view the quantitative data for any survey
+* As a user I want to be able to create a new community cares portal
+* As a user I want to view the online wall
+* As a user I want to be able to add new enteries to the wall, including text and photos
 
 
 
-
-### Taker Stories
-* As a taker I would like to be able to view a summary of submitted answers after I submit my answers
-
-
+##Screen Shot of completed App
+<img src="img/AppScreenShot.png">
 
 
 ##Wireframe Diagrams
+<img src="img/WireFrame1.jpg">
+<img src="img/WireFrame2.jpg">
 
+##Explanation of Technologies Used
+I selected Mongo as my database because of it's flexibly.   I have still have major pieces of work I want to do and like the fact that I don't have to make all my design decisions up front.   I selected socket.io because if it's ease of use (coding along with the demo) and that it has been very popular on GitHub.
 
+##Unsolved Problems/Major Hurdles
+I am having intermitant problems with saving my conversations in the database.   Maybe an interaction wit socket.io and mongo
 
-##Workflow Planning
+##Installation Instructions
+N/A
+
+##General Approach/Workflow Planning
 * Define user stories
 * Create Wireframe for Website
 * Analysis of user stores for determining what data collections are present in the database
@@ -69,9 +60,9 @@ The survey program will have two types of roles. Creators and takers.
 * Work on Phase II tasks
 
 ## Technologies Used
-HTLM, CSS, Boostrap
-JavaScript,  JQuery, AJAX, JSON
-Handlebars, Node.js, Express, Mongodb, Mongoose
+HTLM, CSS, Boostrap, socket.io,
+JavaScript,  JQuery, AJAX, JSON,
+Node.js, Express, Mongodb, Mongoose
 
 ##URL to Project 4 hosted in gh-pages
 http://mkutter72.github.io/project4-frontend-II/
