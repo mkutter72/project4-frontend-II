@@ -38,7 +38,7 @@ $(document).ready(function () {
 
     // Get the message ready.   It will be sent after the database transaction has completed
     var d = new Date();
-    messageToBeSent = sessionStorage.currentUser + " " + d.toLocaleString() + "\n" + $('#messageTextID').val() + "\n\n";
+    messageToBeSent = "MSG" + sessionStorage.currentUser + " " + d.toLocaleString() + "\n" + $('#messageTextID').val() + "\n\n";
 
     sendBoardMessage();
     api.updateMessageBoard(messageData,generalCallback);
@@ -64,10 +64,12 @@ $(document).ready(function () {
 
 
   socket.on('chat message', function(msg){
-      allMessages += msg;
+    if (msg.startsWith("MSG")) {
+      var newMessage = msg.replace("MSG","");
+      allMessages += newMessage;
       $('#chatspace').val(allMessages);
-      console.log(msg);
-
+      console.log(newMessage);
+      }
     });
 
 });

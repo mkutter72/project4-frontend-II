@@ -34,7 +34,7 @@ function fillCalendarCallback(error, data) {
 function displayMessagesCallback(error, data) {
     if (error) {
 
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      $('#chatspace').val('status: ' + error.status + ', error: ' +error.error);
       return;
     }
 
@@ -52,8 +52,7 @@ function displayMessagesCallback(error, data) {
         }
       $('#chatspace').val(allMessages);
     } else {
-      console.log("error,  message board not found");
-      $('#chatspace').val("");
+      $('#chatspace').val("error, no messages found");
     }
 
   };
@@ -61,7 +60,7 @@ function displayMessagesCallback(error, data) {
 function displayBoardNamesCallback(error, data) {
     if (error) {
 
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      $('#chatspace').val('status: ' + error.status + ', error: ' +error.error);
       return;
     }
 
@@ -77,7 +76,7 @@ function displayBoardNamesCallback(error, data) {
          }
       $('#chatspace').val(allMessages);
     } else {
-      console.log("error,  message board not found");
+      $('#chatspace').val("No message boards found");
     }
 
   };
