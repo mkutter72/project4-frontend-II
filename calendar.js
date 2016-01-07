@@ -120,7 +120,6 @@ socket.on('chat message', function(msg){
 
 
 $(".responsive-calendar").responsiveCalendar({
-  time: '2015-12',
   startFromSunday: true,
   allRows: false,
 
