@@ -77,14 +77,26 @@ $(document).ready(function () {
 
     $('#create-appointment').trigger("reset");
 
-    api.createAppointment(appointmentData,generalCallback);
+    // Just checking that the date is not yesterday or before.
+    // Not checking hours input
+    var calDate = new Date( appointmentData["appDate"] + " 23:59:00");
+    var curDate = new Date();
 
-    // the database will insert username for us.   Insert it
-    // after the db call so the socket message will have all the info
-    appointmentData["userName"] = sessionStorage.currentUser;
-    var msg =JSON.stringify(appointmentData);
-    msg = "ADD" + msg;
-    socket.emit('chat message', msg);
+    if (calDate.getTime() < curDate.getTime())
+        $('#myModal').modal('show');
+    else {
+      api.createAppointment(appointmentData,generalCallback);
+
+      // the database will insert username for us.   Insert it
+      // after the db call so the socket message will have all the info
+      appointmentData["userName"] = sessionStorage.currentUser;
+      var msg =JSON.stringify(appointmentData);
+      msg = "ADD" + msg;
+      socket.emit('chat message', msg);
+    }
+
+
+
   });
 
 $('#clearEvents').on('click',function (){
