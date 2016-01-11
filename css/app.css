@@ -57,6 +57,14 @@
 }
 
 #dropdownMenu1 {
-  min-width: 200px;
-  max-height: 50px;
+  min-width: 257px;
+  min-height: 50px;
+}
+
+#boardNameID {
+   min-height: 50px;
+}
+
+#messageTextID{
+   min-height: 50px;
 }

@@ -14,25 +14,6 @@ function sendBoardMessage()
 };
 
 $(document).ready(function () {
-  // fill selection dropdown
-  var list = document.getElementById("mboardDropDown");
-  var table = ["one", "two", "three"]
-  for (var i = 0; i < 3; i++){
-    var opt = table[i];
-    var li = document.createElement("li");
-    var link = document.createElement("a");
-    var text = document.createTextNode(opt);
-    link.appendChild(text);
-    link.href = "#";
-    li.appendChild(link);
-    list.appendChild(li);
-    }
-
-  $('#showEvents').on('click',function (event){
-    e.preventDefault();
-    var resultString = JSON.stringify(allEvents.options.events);
-    $('#result').val(resultString);
-  });
 
   $('#createBoardID').on('click',function (e){
     e.preventDefault();
@@ -40,6 +21,7 @@ $(document).ready(function () {
       "boardname": $('#boardNameID').val()
         };
 
+    $('#chatspace').val("");
     api.createMessageBoard(boardData,addOrRemoveBoardCallback);
     });
 
@@ -59,11 +41,6 @@ $(document).ready(function () {
     $('#messageTextID').val("");
     });
 
-  $('#selectBoardID').on('click',function (e){
-    e.preventDefault();
-    api.getMessageBoard($('#boardNameID').val(),displayMessagesCallback);
-    });
-
  $('#listBoardsID').on('click',function (e){
     e.preventDefault();
     api.getMessageBoardNames(displayBoardNamesCallback);
@@ -76,11 +53,11 @@ $(document).ready(function () {
     });
 
 
-  $("#mboardDropDown").on("click", "li", function(event){
-    console.log($(this).text());
-    console.log( document.getElementById("dropdownMenu1"));
+  $("#mboardDropDown").on("click", "li", function(e){
+    e.preventDefault();
     var newButtonText = $(this).text() + '   <span class="caret">';
     document.getElementById("dropdownMenu1").innerHTML = newButtonText;
+    api.getMessageBoard($(this).text(),displayMessagesCallback);
   })
 
 
@@ -93,6 +70,8 @@ $(document).ready(function () {
       }
     });
 
+    // fill selection dropdown
+    api.getMessageBoardNames(displayBoardNamesCallback);
 });
 
 externAppsFunctions['sendBoardMessage'] = sendBoardMessage;
