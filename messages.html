@@ -88,14 +88,23 @@
 
     <!-- Main Content -->
     <div class="container">
-
-
       <div class="messageDisplay">
+
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Select Message Board   <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="mboardDropDown">
+            </ul>
+
+            <input id="selectBoardID" type="button" class="btn btn-primary" value="Display Board">
+            <input id="listBoardsID" type="button" class="btn btn-primary" value="List Boards">
+            <input id="deleteBoardID" type="button" class="btn btn-primary" value="Delete Board">
+        </div>
+
+        <br>
         <input id="boardNameID" type="text"  placeholder="board name">
         <input id="createBoardID" type="button" class="btn btn-primary" value="Create Board">
-        <input id="selectBoardID" type="button" class="btn btn-primary" value="Display Board">
-        <input id="listBoardsID" type="button" class="btn btn-primary" value="List Boards">
-        <input id="deleteBoardID" type="button" class="btn btn-primary" value="Delete Board">
+
         <br>
         <br>
         <input id="messageTextID" type="text"  placeholder="message">
@@ -105,9 +114,7 @@
             <textarea id="chatspace"></textarea>
         </div>
       </div>
-
     </div>
-
     <hr>
 
 

@@ -56,3 +56,7 @@
   top : -175px;
 }
 
+#dropdownMenu1 {
+  min-width: 200px;
+  max-height: 50px;
+}

@@ -14,6 +14,20 @@ function sendBoardMessage()
 };
 
 $(document).ready(function () {
+  // fill selection dropdown
+  var list = document.getElementById("mboardDropDown");
+  var table = ["one", "two", "three"]
+  for (var i = 0; i < 3; i++){
+    var opt = table[i];
+    var li = document.createElement("li");
+    var link = document.createElement("a");
+    var text = document.createTextNode(opt);
+    link.appendChild(text);
+    link.href = "#";
+    li.appendChild(link);
+    list.appendChild(li);
+    }
+
   $('#showEvents').on('click',function (event){
     e.preventDefault();
     var resultString = JSON.stringify(allEvents.options.events);
@@ -61,6 +75,13 @@ $(document).ready(function () {
     api.deleteMessageBoard($('#boardNameID').val(),addOrRemoveBoardCallback);
     });
 
+
+  $("#mboardDropDown").on("click", "li", function(event){
+    console.log($(this).text());
+    console.log( document.getElementById("dropdownMenu1"));
+    var newButtonText = $(this).text() + '   <span class="caret">';
+    document.getElementById("dropdownMenu1").innerHTML = newButtonText;
+  })
 
 
   socket.on('chat message', function(msg){
