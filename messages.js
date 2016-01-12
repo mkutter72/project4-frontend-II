@@ -7,6 +7,7 @@ var allEvents;
 var socket = io('http://localhost:3000');
 
 var messageToBeSent = "";
+var currentMessageBoard = "";
 
 function sendBoardMessage()
 {
@@ -17,18 +18,33 @@ $(document).ready(function () {
 
   $('#createBoardID').on('click',function (e){
     e.preventDefault();
+
+    if ($('#boardNameID').val() === "") {
+      $('#chatspace').val("Please enter a name for the new message board.");
+      return;
+    }
+
+    currentMessageBoard = $('#boardNameID').val();
     var boardData = {
-      "boardname": $('#boardNameID').val()
+      "boardname": currentMessageBoard
         };
 
     $('#chatspace').val("");
+    var newButtonText = currentMessageBoard + '   <span class="caret">';
+    document.getElementById("dropdownMenu1").innerHTML = newButtonText;
     api.createMessageBoard(boardData,addOrRemoveBoardCallback);
     });
 
  $('#postMessageID').on('click',function (e){
     e.preventDefault();
+
+    if (currentMessageBoard === "") {
+      $('#chatspace').val("Please select a message board");
+      return;
+    }
+
     var messageData = {
-      "boardname": $('#boardNameID').val(),
+      "boardname": currentMessageBoard,
       "messagetext": $('#messageTextID').val()
       };
 
@@ -41,23 +57,24 @@ $(document).ready(function () {
     $('#messageTextID').val("");
     });
 
- $('#listBoardsID').on('click',function (e){
-    e.preventDefault();
-    api.getMessageBoardNames(displayBoardNamesCallback);
-    });
-
-
  $('#deleteBoardID').on('click',function (e){
+    if (currentMessageBoard === "") {
+      $('#chatspace').val("Please select a message board to delete.");
+      return;
+    }
     e.preventDefault();
-    api.deleteMessageBoard($('#boardNameID').val(),addOrRemoveBoardCallback);
+    $('#chatspace').val("");
+    document.getElementById("dropdownMenu1").innerHTML = 'Select Message Board   <span class="caret">';
+    api.deleteMessageBoard(currentMessageBoard,addOrRemoveBoardCallback);
     });
 
 
   $("#mboardDropDown").on("click", "li", function(e){
     e.preventDefault();
-    var newButtonText = $(this).text() + '   <span class="caret">';
+    currentMessageBoard = $(this).text();
+    var newButtonText = currentMessageBoard + '   <span class="caret">';
     document.getElementById("dropdownMenu1").innerHTML = newButtonText;
-    api.getMessageBoard($(this).text(),displayMessagesCallback);
+    api.getMessageBoard(currentMessageBoard,displayMessagesCallback);
   })
 
 

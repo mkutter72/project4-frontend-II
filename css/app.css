@@ -68,3 +68,7 @@
 #messageTextID{
    min-height: 50px;
 }
+
+.caret {
+    border-width: 10px;
+}
