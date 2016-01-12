@@ -56,3 +56,19 @@
   top : -175px;
 }
 
+#dropdownMenu1 {
+  min-width: 257px;
+  min-height: 50px;
+}
+
+#boardNameID {
+   min-height: 50px;
+}
+
+#messageTextID{
+   min-height: 50px;
+}
+
+.caret {
+    border-width: 10px;
+}

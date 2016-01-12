@@ -68,13 +68,23 @@ function displayBoardNamesCallback(error, data) {
       // keeping this around just incase I need to turn back on displaying all returns from DB
       var dataStr = JSON.stringify(data, null, 4);
 
-      allMessages = "Available Messageboards\n";
       var oneThing = data.boardnames;
       var size = oneThing.length;
-      for (var i = 0; i < size; i++) {
-         allMessages += oneThing[i] + "\n";
-         }
-      $('#chatspace').val(allMessages);
+
+      $('#mboardDropDown').empty();
+      var list = document.getElementById("mboardDropDown");
+
+      for (var i = 0; i < size; i++){
+        var opt = oneThing[i];
+        var li = document.createElement("li");
+        var link = document.createElement("a");
+        var text = document.createTextNode(opt);
+        link.appendChild(text);
+        link.href = "#";
+        li.appendChild(link);
+        list.appendChild(li);
+        }
+
     } else {
       $('#chatspace').val("No message boards found");
     }
