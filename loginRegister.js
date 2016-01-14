@@ -1,5 +1,13 @@
 'use strict';
 
+var loginCallback = function(error, data){
+    if(error){
+      console.log(error);
+      alert("Error in logging in.  Check username and password.");
+    } else {
+      window.location.href = 'indexFull.html'
+    }
+  };
 
   $('#registerForm').on('submit', function(e) {
     e.preventDefault();
@@ -30,15 +38,6 @@ $('#loginForm').on('submit', function(e) {
     $('.loginStatus').text("");
     sessionStorage.currentUser = credentials["username"];
 
-    var loginCallback = function(error, data){
-      if(error){
-        console.log(error);
-        $('.loginStatus').text('Error in login');
-      } else {
-
-        window.location.href = 'indexFull.html'
-      }
-    };
     api.login(credentials, loginCallback);
 
   });
@@ -67,13 +66,5 @@ $('#logOut').on('click', function(e) {
     var credentials = form2object(this);
     sessionStorage.currentUser = credentials["username"];
 
-    var loginCallback = function(error, data){
-      if(error){
-        console.log(error);
-      } else {
-        window.location.href = 'indexFull.html'
-
-      }
-    };
     api.login(credentials, loginCallback);
 });
