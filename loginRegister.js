@@ -2,9 +2,6 @@
 
 var loginCallback = function(error, data){
     if(error){
-      console.log(error);
-
-      $('.modal-title').text("New Title");
        $('#myModal').modal('show');
     } else {
       window.location.href = 'indexFull.html'
@@ -23,7 +20,6 @@ var loginCallback = function(error, data){
     else {
       var registerCallback = function(error, data){
         if(error){
-          console.log(error);
           $('.modal-body').text("Username may already be in use");
           $('#myModal').modal('show');
         } else {
