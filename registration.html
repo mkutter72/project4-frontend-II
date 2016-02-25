@@ -76,7 +76,6 @@
    <section class="">
       <div class="container">
         <h1><span>Registration</span></h1>
-        <div class="registerStatus"> </div>
         <div class="row">
           <div class="col-sm-12 col-md-offset-3 col-md-6">
             <div class="thumbnail info-thumbnail background-lead color-white">
@@ -109,7 +108,26 @@
         </div>
     </section>
 
-    <hr>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Error In Registration</h4>
+          </div>
+          <div class="modal-body">
+            <p>Username may aleady exist.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
 
     <!-- jQuery -->

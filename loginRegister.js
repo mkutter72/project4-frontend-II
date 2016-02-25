@@ -3,6 +3,8 @@
 var loginCallback = function(error, data){
     if(error){
       console.log(error);
+
+      $('.modal-title').text("New Title");
        $('#myModal').modal('show');
     } else {
       window.location.href = 'indexFull.html'
@@ -13,21 +15,23 @@ var loginCallback = function(error, data){
     e.preventDefault();
 
     var credentials = form2object(this);
-    $('.registerStatus').text("");
 
-    if (credentials["password"] !== credentials["password2"])
-      $('.registerStatus').text('Passwords do not match');
-
-    var registerCallback = function(error, data){
-      if(error){
-        console.log(error);
-        $('.registerStatus').text('Error in registration');
-      } else {
-        window.location.href = 'login.html';
-      }
-    };
-    api.register(credentials, registerCallback);
-
+    if (credentials["password"] !== credentials["password2"]) {
+        $('.modal-body').text("Passwords do not match");
+        $('#myModal').modal('show');
+    }
+    else {
+      var registerCallback = function(error, data){
+        if(error){
+          console.log(error);
+          $('.modal-body').text("Username may already be in use");
+          $('#myModal').modal('show');
+        } else {
+          window.location.href = 'login.html';
+        }
+        };
+      api.register(credentials, registerCallback);
+      };
   });
 
 
