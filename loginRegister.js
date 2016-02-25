@@ -3,7 +3,7 @@
 var loginCallback = function(error, data){
     if(error){
       console.log(error);
-      alert("Error in logging in.  Check username and password.");
+       $('#myModal').modal('show');
     } else {
       window.location.href = 'indexFull.html'
     }
