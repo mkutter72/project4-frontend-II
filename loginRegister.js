@@ -2,9 +2,6 @@
 
 var loginCallback = function(error, data){
     if(error){
-      console.log(error);
-
-      $('.modal-title').text("New Title");
        $('#myModal').modal('show');
     } else {
       window.location.href = 'indexFull.html'
@@ -23,7 +20,6 @@ var loginCallback = function(error, data){
     else {
       var registerCallback = function(error, data){
         if(error){
-          console.log(error);
           $('.modal-body').text("Username may already be in use");
           $('#myModal').modal('show');
         } else {
@@ -39,7 +35,6 @@ $('#loginForm').on('submit', function(e) {
     e.preventDefault();
 
     var credentials = form2object(this);
-    $('.loginStatus').text("");
     sessionStorage.currentUser = credentials["username"];
 
     api.login(credentials, loginCallback);
@@ -50,7 +45,7 @@ $('#loginForm').on('submit', function(e) {
 
 $('#logOut').on('click', function(e) {
     e.preventDefault();
-    currentUser = "";
+    sessionStorage.currentUser = "";
 
     var logoutCallback = function(error, data){
       if(error)
