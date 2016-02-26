@@ -46,7 +46,7 @@ $('#loginForm').on('submit', function(e) {
 
 $('#logOut').on('click', function(e) {
     e.preventDefault();
-    currentUser = "";
+    sessionStorage.currentUser = "";
 
     var logoutCallback = function(error, data){
       if(error)
