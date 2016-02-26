@@ -35,7 +35,6 @@ $('#loginForm').on('submit', function(e) {
     e.preventDefault();
 
     var credentials = form2object(this);
-    $('.loginStatus').text("");
     sessionStorage.currentUser = credentials["username"];
 
     api.login(credentials, loginCallback);
