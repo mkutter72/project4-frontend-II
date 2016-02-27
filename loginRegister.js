@@ -43,20 +43,7 @@ $('#loginForm').on('submit', function(e) {
 
 
 
-$('#logOut').on('click', function(e) {
-    e.preventDefault();
-    sessionStorage.currentUser = "";
 
-    var logoutCallback = function(error, data){
-      if(error)
-        console.log(error);
-
-      window.location.href = 'index.html';
-    };
-
-    api.logout(logoutCallback);
-
-  });
 
 
  $('#logMeIn').on('submit', function(e) {
