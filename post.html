@@ -23,6 +23,7 @@
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+<script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -121,10 +122,26 @@
 
     <hr>
     <div id="wallDisplay">
-        <input id="wallText" type="text"  placeholder="Wall Message">
-        <input id="wallPhotoID" type="button" class="btn btn-primary" value="Upload Photo">
+        <input id="wallTitle" type="text"  placeholder="Message Title">
+        <div>
+            <input id="wallText" type="text"  placeholder="Message Text">
+        </div>
+        <div class="col-lg-6 col-sm-6 col-12">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <span class="btn btn-primary btn-file">
+                        Select Photo&hellip; <input type="file" multiple>
+                    </span>
+                </span>
+                <input type="text" class="form-control" readonly>
+            </div>
+        </div>
+
+
         <input id="submitPostID" type="button" class="btn btn-primary" value="Submit Post">
     </div>
+
+
 
     <br><br><br><br>
     <!-- jQuery -->
@@ -137,7 +154,7 @@
     <script src="js/clean-blog.min.js"></script>
     <script src="app.js"></script>
     <script src="ajax.js"></script>
-
+    <script src="post.js"></script>
 </body>
 
 </html>
