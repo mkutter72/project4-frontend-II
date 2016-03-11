@@ -102,7 +102,7 @@ function displayWallPostsCallback(error, data) {
       // keeping this around just incase I need to turn back on displaying all returns from DB
       var dataStr = JSON.stringify(data, null, 4);
 
-      for (var i = 0; i < data.length; i++) {
+      for (var i = data.length-1; i >= 0; i--) {
         var outputStr = "<h2 class=\"section-heading\">" + data[i].title + "</h2>";
         outputStr += "<p>" + data[i].text + "</p>";
 
