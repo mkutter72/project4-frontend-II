@@ -91,7 +91,33 @@ function displayBoardNamesCallback(error, data) {
 
   };
 
+function displayWallPostsCallback(error, data) {
+    if (error) {
 
+      console.log('status: ' + error.status + ', error: ' +error.error);
+      return;
+    }
+
+    if (data) {
+      // keeping this around just incase I need to turn back on displaying all returns from DB
+      var dataStr = JSON.stringify(data, null, 4);
+
+      for (var i = 0; i < data.length; i++) {
+        var outputStr = "<h2 class=\"section-heading\">" + data[i].title + "</h2>";
+        outputStr += "<p>" + data[i].text + "</p>";
+
+        if (data[i].photo) {
+          outputStr += "<a><img class=\"img\" src=\""
+          outputStr += data[i].photo + "\"></a>";
+          }
+
+        outputStr += "<span class=\"caption text-muted\">Posted by ";
+        outputStr += data[i].userName + " on "+ data[i].date + "</span><hr>";
+
+        $("#wallStart").append(outputStr);
+        }
+    }
+  };
 
 
 function generalCallback(error, data) {
@@ -203,6 +229,12 @@ var api = {
     }, callback);
   },
 
+  getWallPosts: function (callback) {
+    this.ajax({
+      method: 'GET',
+      url: this.url + '/wallpost',
+    }, callback);
+  },
 };
 
 
