@@ -108,7 +108,7 @@ function displayWallPostsCallback(error, data) {
 
         if (data[i].photo) {
           outputStr += "<a><img class=\"img\" src=\""
-          outputStr += data[i].photo + "\"></a>";
+          outputStr += data[i].photo + "\" width=\"500\" height=\"500\"></a>";
           }
 
         outputStr += "<span class=\"caption text-muted\">Posted by ";
