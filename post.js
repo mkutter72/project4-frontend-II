@@ -29,4 +29,24 @@ $(document).ready( function() {
 
   // $("#wallStart").append("<h2 class=\"section-heading\">Sending Healing Love</h2><p>Stan,  I was really sad to get your news. Let me know if there is anything you need help with.</p><span class=\"caption text-muted\">Posted by Sarah on December 14, 2015</span><hr>");
 
+    $('#upload-form').on('submit', function(e) {
+      e.preventDefault();
+      var formData = new FormData(e.target);
+
+      api.createWallPost(formData,generalCallback);
+
+    // $.ajax({
+    //   url: 'http://localhost:3000/wallpost/makenew',
+    //   method: 'POST',
+    //   contentType: false,
+    //   processData: false,
+    //   data: formData
+    // }).done(function(data) {
+    //   $('#result').html(JSON.stringify(data, null, 2));
+    // }).fail(function(jqxhr) {
+    //   console.error(jqxhr);
+   //});
+  });
+
+
 });

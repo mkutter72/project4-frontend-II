@@ -121,25 +121,27 @@
     </article>
 
     <hr>
-    <div id="wallDisplay">
-        <input id="wallTitle" type="text"  placeholder="Message Title">
-        <div>
-            <input id="wallText" type="text"  placeholder="Message Text">
-        </div>
-        <div class="col-lg-6 col-sm-6 col-12">
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <span class="btn btn-primary btn-file">
-                        Select Photo&hellip; <input type="file" multiple>
-                    </span>
-                </span>
-                <input type="text" class="form-control" readonly>
-            </div>
-        </div>
+    <form id="upload-form" enctype="multipart/form-data" accept-charset="utf-8">
+      <div id="wallDisplay">
+          <input id="wallTitle" type="text" name="title" placeholder="Message Title">
+          <div>
+              <input id="wallText" type="text"  name="caption" placeholder="Message Text">
+          </div>
+          <div class="col-lg-6 col-sm-6 col-12">
+              <div class="input-group">
+                  <span class="input-group-btn">
+                      <span class="btn btn-primary btn-file">
+                          Select Photo&hellip; <input type="file" name="image" multiple>
+                      </span>
+                  </span>
+                  <input type="text" class="form-control" readonly>
+              </div>
+          </div>
 
 
-        <input id="submitPostID" type="button" class="btn btn-primary" value="Submit Post">
-    </div>
+          <input id="submitPostID" type="submit" class="btn btn-primary" value="Submit Post">
+      </div>
+    </form>
 
 
 

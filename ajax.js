@@ -123,7 +123,7 @@ function displayWallPostsCallback(error, data) {
 function generalCallback(error, data) {
     if (error) {
 
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      console.log('status: ' + error.status + ', error: ' +error.error);
       return;
     }
 
@@ -233,6 +233,16 @@ var api = {
     this.ajax({
       method: 'GET',
       url: this.url + '/wallpost',
+    }, callback);
+  },
+
+  createWallPost: function (data,callback) {
+    this.ajax({
+      method: 'POST',
+      url: this.url + '/wallpost/makenew',
+      contentType: false,
+      processData: false,
+      data: data
     }, callback);
   },
 };
