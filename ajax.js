@@ -102,13 +102,19 @@ function displayWallPostsCallback(error, data) {
       // keeping this around just incase I need to turn back on displaying all returns from DB
       var dataStr = JSON.stringify(data, null, 4);
 
+      // clear the page first
+      $("#wallStart").empty();
+
+      // go to the top of the page
+      $('body').scrollTop(0);
+
       for (var i = data.length-1; i >= 0; i--) {
         var outputStr = "<h2 class=\"section-heading\">" + data[i].title + "</h2>";
         outputStr += "<p>" + data[i].text + "</p>";
 
         if (data[i].photo) {
           outputStr += "<a><img class=\"img\" src=\""
-          outputStr += data[i].photo + "\" width=\"500\" height=\"500\"></a>";
+          outputStr += data[i].photo + "\" width=\"345\" height=\"454\"></a>";
           }
 
         outputStr += "<span class=\"caption text-muted\">Posted by ";
@@ -119,6 +125,15 @@ function displayWallPostsCallback(error, data) {
     }
   };
 
+
+function createWallPostsCallback(error, data) {
+    if (error) {
+      alert("Error in creating wallpost");
+      console.log('status: ' + error.status + ', error: ' +error.error);
+    } else {
+      api.getWallPosts(displayWallPostsCallback);
+    }
+};
 
 function generalCallback(error, data) {
     if (error) {

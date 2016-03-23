@@ -33,7 +33,7 @@ $(document).ready( function() {
       e.preventDefault();
       var formData = new FormData(e.target);
 
-      api.createWallPost(formData,generalCallback);
+      api.createWallPost(formData,createWallPostsCallback);
 
     // $.ajax({
     //   url: 'http://localhost:3000/wallpost/makenew',
