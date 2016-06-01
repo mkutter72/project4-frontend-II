@@ -1,10 +1,27 @@
 'use strict';
 
 $(document).on('change', '.btn-file :file', function() {
+    var file,img;
+    var _URL = window.URL || window.webkitURL;
+    if ((file = this.files[0])) {
+        img = new Image();
+        img.onload = function() {
+            alert(this.width + " " + this.height);
+        };
+        img.onerror = function() {
+            alert( "not a valid file: " + file.type);
+        };
+        img.src = _URL.createObjectURL(file);
+      };
+
+
   var input = $(this),
-      numFiles = input.get(0).files ? input.get(0).files.length : 1,
-      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+  numFiles = input.get(0).files ? input.get(0).files.length : 1,
+  label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
   input.trigger('fileselect', [numFiles, label]);
+
+
+
 });
 
 $(document).ready( function() {
@@ -33,7 +50,12 @@ $(document).ready( function() {
       e.preventDefault();
       var formData = new FormData(e.target);
 
+
+
+
       api.createWallPost(formData,createWallPostsCallback);
+
+
 
     // $.ajax({
     //   url: 'http://localhost:3000/wallpost/makenew',
