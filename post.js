@@ -1,12 +1,17 @@
 'use strict';
 
+var imageHeight,imageWidth;
+
 $(document).on('change', '.btn-file :file', function() {
     var file,img;
+    imageWidth = 0;
+    imageHeight = 0;
     var _URL = window.URL || window.webkitURL;
     if ((file = this.files[0])) {
         img = new Image();
         img.onload = function() {
-            alert(this.width + " " + this.height);
+            imageWidth = this.width;
+            imageHeight = this.height;
         };
         img.onerror = function() {
             alert( "not a valid file: " + file.type);
@@ -19,10 +24,8 @@ $(document).on('change', '.btn-file :file', function() {
   numFiles = input.get(0).files ? input.get(0).files.length : 1,
   label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
   input.trigger('fileselect', [numFiles, label]);
-
-
-
 });
+
 
 $(document).ready( function() {
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
@@ -51,23 +54,11 @@ $(document).ready( function() {
       var formData = new FormData(e.target);
 
 
-
+      formData.append("imageHeight",imageHeight);
+      formData.append("imageWidth",imageWidth);
 
       api.createWallPost(formData,createWallPostsCallback);
 
-
-
-    // $.ajax({
-    //   url: 'http://localhost:3000/wallpost/makenew',
-    //   method: 'POST',
-    //   contentType: false,
-    //   processData: false,
-    //   data: formData
-    // }).done(function(data) {
-    //   $('#result').html(JSON.stringify(data, null, 2));
-    // }).fail(function(jqxhr) {
-    //   console.error(jqxhr);
-   //});
   });
 
 

@@ -114,7 +114,16 @@ function displayWallPostsCallback(error, data) {
 
         if (data[i].photo) {
           outputStr += "<a><img class=\"img\" src=\""
-          outputStr += data[i].photo + "\" width=\"345\" height=\"454\"></a>";
+          if (data[i].imageWidth > 4000 || data[i].imageHeight > 4000) {
+            outputStr += data[i].photo + "\" width=\"" + data[i].imageWidth/10  + "\"height=\"" + data[i].imageHeight/10 + "\"></a>";
+          } else
+          if (data[i].imageWidth > 2000 || data[i].imageHeight > 2000) {
+            outputStr += data[i].photo + "\" width=\"" + data[i].imageWidth/6  + "\"height=\"" + data[i].imageHeight/6 + "\"></a>";
+          } else
+          if (data[i].imageWidth > 1000 || data[i].imageHeight > 1000) {
+            outputStr += data[i].photo + "\" width=\"" + data[i].imageWidth/3  + "\"height=\"" + data[i].imageHeight/3 + "\"></a>";
+          } else
+            outputStr += data[i].photo + "\"></a>";
           }
 
         outputStr += "<span class=\"caption text-muted\">Posted by ";
