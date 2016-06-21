@@ -23,6 +23,7 @@
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
+<script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -89,43 +90,38 @@
     <article>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
-                    <h2 class="section-heading">A Huge Thanks!</h2>
-
-                    <p>Hello everyone,  it's Stan.   I wanted to let you all know how greatful I am that you have created this web community.   I'm feeling better so I think the treatments are working.   Looking forward to see you soon</p>
-
-                    <span class="caption text-muted">Posted by StanC on December 14, 2015</span>
-                   <hr>
-                    <h2 class="section-heading">Happy Memories</h2>
-
-                    <p>Stan.  I came across this photo from our biking trip in Italy last fall.  What an amazing adventure.   Get well soon so we can have plan our next Journey.</p>
-
-                    <a href="#">
-                        <img class="img-responsive" src="img/post-sample-image.jpg" alt="" data-rotate="-90">
-                    </a>
-                    <span class="caption text-muted">Posted by Mike on December 14, 2015</span>
-                   <hr>
-
-                  <h2 class="section-heading">Sending Healing Love</h2>
-
-                    <p>Stan,  I was really sad to get your news. Let me know if there is anything you need help with.</p>
-
-                    <span class="caption text-muted">Posted by Sarah on December 14, 2015</span>
-                   <hr>
-
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" id="wallStart">
                 </div>
             </div>
         </div>
     </article>
 
     <hr>
-    <div id="wallDisplay">
-        <input id="wallText" type="text"  placeholder="Wall Message">
-        <input id="wallPhotoID" type="button" class="btn btn-primary" value="Upload Photo">
-        <input id="submitPostID" type="button" class="btn btn-primary" value="Submit Post">
+    <form id="upload-form" enctype="multipart/form-data" accept-charset="utf-8">
+      <div id="wallDisplay">
+          <input id="wallTitle" type="text" name="title" placeholder="Message Title">
+          <div>
+              <input id="wallText" type="text"  name="caption" placeholder="Message Text">
+          </div>
+          <div class="col-lg-6 col-sm-6 col-12">
+              <div class="input-group">
+                  <span class="input-group-btn">
+                      <span class="btn btn-primary btn-file">
+                          Select Photo&hellip; <input type="file" name="image" multiple>
+                      </span>
+                  </span>
+                  <input type="text" class="form-control" readonly>
+              </div>
+          </div>
 
-        <br><br><br><br>
+
+          <input id="submitPostID" type="submit" class="btn btn-primary" value="Submit Post">
+      </div>
+    </form>
+
+
+
+    <br><br><br><br>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -136,7 +132,7 @@
     <script src="js/clean-blog.min.js"></script>
     <script src="app.js"></script>
     <script src="ajax.js"></script>
-
+    <script src="post.js"></script>
 </body>
 
 </html>

@@ -91,13 +91,63 @@ function displayBoardNamesCallback(error, data) {
 
   };
 
+function displayWallPostsCallback(error, data) {
+    if (error) {
+
+      console.log('status: ' + error.status + ', error: ' +error.error);
+      return;
+    }
+
+    if (data) {
+      // keeping this around just incase I need to turn back on displaying all returns from DB
+      var dataStr = JSON.stringify(data, null, 4);
+
+      // clear the page first
+      $("#wallStart").empty();
+
+      // go to the top of the page
+      $('body').scrollTop(0);
+
+      for (var i = data.length-1; i >= 0; i--) {
+        var outputStr = "<h2 class=\"section-heading\">" + data[i].title + "</h2>";
+        outputStr += "<p>" + data[i].text + "</p>";
+
+        if (data[i].photo) {
+          outputStr += "<a><img class=\"img\" src=\""
+          if (data[i].imageWidth > 4000 || data[i].imageHeight > 4000) {
+            outputStr += data[i].photo + "\" width=\"" + data[i].imageWidth/10  + "\"height=\"" + data[i].imageHeight/10 + "\"></a>";
+          } else
+          if (data[i].imageWidth > 2000 || data[i].imageHeight > 2000) {
+            outputStr += data[i].photo + "\" width=\"" + data[i].imageWidth/6  + "\"height=\"" + data[i].imageHeight/6 + "\"></a>";
+          } else
+          if (data[i].imageWidth > 1000 || data[i].imageHeight > 1000) {
+            outputStr += data[i].photo + "\" width=\"" + data[i].imageWidth/3  + "\"height=\"" + data[i].imageHeight/3 + "\"></a>";
+          } else
+            outputStr += data[i].photo + "\"></a>";
+          }
+
+        outputStr += "<span class=\"caption text-muted\">Posted by ";
+        outputStr += data[i].userName + " on "+ data[i].date + "</span><hr>";
+
+        $("#wallStart").append(outputStr);
+        }
+    }
+  };
 
 
+function createWallPostsCallback(error, data) {
+    if (error) {
+      alert("Error in creating wallpost");
+      console.log('status: ' + error.status + ', error: ' +error.error);
+    } else {
+      api.getWallPosts(displayWallPostsCallback);
+    }
+};
 
 function generalCallback(error, data) {
     if (error) {
 
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      console.log('status: ' + error.status + ', error: ' +error.error);
       return;
     }
 
@@ -203,6 +253,22 @@ var api = {
     }, callback);
   },
 
+  getWallPosts: function (callback) {
+    this.ajax({
+      method: 'GET',
+      url: this.url + '/wallpost',
+    }, callback);
+  },
+
+  createWallPost: function (data,callback) {
+    this.ajax({
+      method: 'POST',
+      url: this.url + '/wallpost/makenew',
+      contentType: false,
+      processData: false,
+      data: data
+    }, callback);
+  },
 };
 
 
