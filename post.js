@@ -1,6 +1,7 @@
 'use strict';
 
 var imageHeight,imageWidth;
+var filesSelected = 0;
 
 $(document).on('change', '.btn-file :file', function() {
     var file,img;
@@ -24,6 +25,7 @@ $(document).on('change', '.btn-file :file', function() {
   numFiles = input.get(0).files ? input.get(0).files.length : 1,
   label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
   input.trigger('fileselect', [numFiles, label]);
+  filesSelected = numFiles;
 });
 
 
@@ -45,14 +47,19 @@ $(document).ready( function() {
 
     $('#upload-form').on('submit', function(e) {
       e.preventDefault();
-      var formData = new FormData(e.target);
 
+      if (filesSelected === 0 && $('#wallTitle').val() === "" && $('#wallText').val() === "")
+        alert("Enter a least one input");
+      else {
+        var formData = new FormData(e.target);
 
-      formData.append("imageHeight",imageHeight);
-      formData.append("imageWidth",imageWidth);
+        formData.append("imageHeight",imageHeight);
+        formData.append("imageWidth",imageWidth);
 
-      api.createWallPost(formData,createWallPostsCallback);
-
+        api.createWallPost(formData,createWallPostsCallback);
+        $('#upload-form').trigger("reset");
+        filesSelected = 0;
+      }
   });
 
 

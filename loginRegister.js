@@ -1,6 +1,7 @@
 'use strict';
 
 var loginCallback = function(error, data){
+    $("*").css("cursor", "default");
     if(error){
        $('#myModal').modal('show');
     } else {
@@ -33,6 +34,7 @@ var loginCallback = function(error, data){
 
 $('#loginForm').on('submit', function(e) {
     e.preventDefault();
+    $("*").css("cursor", "progress");
 
     var credentials = form2object(this);
     sessionStorage.currentUser = credentials["username"];
@@ -48,6 +50,7 @@ $('#loginForm').on('submit', function(e) {
 
  $('#logMeIn').on('submit', function(e) {
     e.preventDefault();
+    $("*").css("cursor", "progress");
 
     var credentials = form2object(this);
     sessionStorage.currentUser = credentials["username"];
